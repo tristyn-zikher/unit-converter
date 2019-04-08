@@ -1,15 +1,30 @@
 const QuartsConverter = (conversionType, numberOfUnits) => {
-  if (conversionType === 'tea-spoons') {
-    return numberOfUnits / 192;
-  } else if (conversionType === 'table-spoons') {
-    return numberOfUnits / 64;
-  } else if (conversionType === 'ounces') {
-    return numberOfUnits / 32;
-  } else if (conversionType === 'pints') {
-    return numberOfUnits / 2;
-  } else if (conversionType === 'quarts') {
-    return numberOfUnits * 1;
+  let value;
+  switch (conversionType) {
+    case 'tea-spoons':
+    value = numberOfUnits / 192;
+      break;
+
+    case 'table-spoons':
+    value = numberOfUnits / 64;
+      break;
+
+    case 'ounces':
+    value = numberOfUnits / 32;
+      break;
+
+    case 'pints':
+    value = numberOfUnits / 2;
+      break;
+
+    case 'quarts':
+    value = numberOfUnits * 1;
+      break;
+
+    default:
+      value = 'NaN';
   }
+  return value;
 }
 
 export default QuartsConverter;

@@ -1,15 +1,30 @@
 const CalculateOunces = (conversionType, numberOfUnits) => {
-  if (conversionType === 'tea-spoons') {
-    return numberOfUnits / 6;
-  } else if (conversionType === 'table-spoons') {
-    return numberOfUnits / 2;
-  } else if (conversionType === 'ounces') {
-    return numberOfUnits * 1;
-  } else if (conversionType === 'pints') {
-    return numberOfUnits * 16;
-  } else if (conversionType === 'quarts') {
-    return numberOfUnits * 32;
+  let value;
+  switch (conversionType) {
+    case 'tea-spoons':
+      value = numberOfUnits / 6;
+      break;
+
+    case 'table-spoons':
+      value = numberOfUnits / 2;
+      break;
+
+    case 'ounces':
+      value = numberOfUnits * 1;
+      break;
+
+    case 'pints':
+      value = numberOfUnits * 16;
+      break;
+
+    case 'quarts':
+      value = numberOfUnits * 32;
+      break;
+
+    default:
+      value = 'NaN';
   }
+  return value;
 }
 
 export default CalculateOunces;

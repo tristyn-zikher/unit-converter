@@ -1,15 +1,30 @@
 const PintsConverter = (conversionType, numberOfUnits) => {
-  if (conversionType === 'tea-spoons') {
-    return numberOfUnits / 96;
-  } else if (conversionType === 'table-spoons') {
-    return numberOfUnits / 32;
-  } else if (conversionType === 'ounces') {
-    return numberOfUnits / 16;
-  } else if (conversionType === 'pints') {
-    return numberOfUnits * 1;
-  } else if (conversionType === 'quarts') {
-    return numberOfUnits * 2;
+  let value;
+  switch (conversionType) {
+    case 'tea-spoons':
+      value = numberOfUnits / 96;
+      break;
+
+    case 'table-spoons':
+      value = numberOfUnits / 32;
+      break;
+
+    case 'ounces':
+      value = numberOfUnits / 16;
+      break;
+
+    case 'pints':
+      value = numberOfUnits * 1;
+      break;
+
+    case 'quarts':
+      value = numberOfUnits * 2;
+      break;
+
+    default:
+      return 'NaN';
   }
+  return value;
 }
 
 export default PintsConverter;

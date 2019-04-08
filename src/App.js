@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import UnitContainer from './components/UnitContainer';
+import UnitBody from './components/UnitBody';
+import UnitInput from './components/UnitInput';
+import ConverterContainer from './containers/ConverterContainer';
 import './App.css';
 
 class App extends Component {
@@ -20,6 +22,9 @@ class App extends Component {
 
   convertUnits(e) {
     let numberOfUnits = +e.target.value;
+    if (isNaN(numberOfUnits)) {
+      return;
+    }
     this.setState((state) => {
       return { numberOfUnits }
     })
@@ -34,34 +39,17 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <h1 className="text-light">Rainbow Liquid Converter</h1>
-        <div className="container">
-          <div className="row">
-            <div className="input-group">
-              <input onChange={this.convertUnits} ref="name" id="name" type="text" className="form-control" aria-label="search by name" />
-              <div className="btn-group ml-0">
-                <div className="container">
-                  <div className="form-group row">
-                    <select onChange={this.setConversionType} className="form-control col" id="type" ref="type">
-                      <option defaultValue value="tea-spoons">Tea Spoons</option>
-                      <option value="table-spoons">Table Spoons</option>
-                      <option value="ounces">Ounces</option>
-                      <option value="pints">Pints</option>
-                      <option value="quarts">Quarts</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <UnitContainer
-            numberOfUnits={this.state.numberOfUnits}
-            conversionType={this.state.conversionType}
-            />
-        </div>
-      </div>
-
+      <ConverterContainer title="Rainbow Liquids Converter">
+        <UnitInput
+          onChange={this.convertUnits}
+          value={this.state.numberOfUnits}
+          onSelect={this.setConversionType}
+        />
+        <UnitBody
+          numberOfUnits={this.state.numberOfUnits}
+          conversionType={this.state.conversionType}
+        />
+      </ConverterContainer>
     );
   }
 }
